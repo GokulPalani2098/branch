@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, Globe, Shield, Warehouse, Users, FileCheck, TrendingUp, Check, X, Minus, ArrowRight, Menu, X as XIcon, MapPin, Phone, Mail, Star, Building2, Scale, Truck, BadgeCheck, ChevronDown } from "lucide-react";
 
@@ -39,13 +40,12 @@ function Nav() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
   const links = [
-    { label: "Home", href: "#hero" },
-    { label: "Services", href: "#services" },
-    { label: "How It Works", href: "#process" },
-    { label: "Compare", href: "#compare" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
   return (
     <nav style={{
@@ -56,7 +56,7 @@ function Nav() {
       transition: "all 0.35s ease",
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-        <a href="#hero" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg, #1E2761, #2D3A8C)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Globe size={20} color="#fff" strokeWidth={2.2} />
           </div>
@@ -73,7 +73,7 @@ function Nav() {
               onMouseLeave={e => e.target.style.color = scrolled ? "#334155" : "#475569"}
             >{l.label}</a>
           ))}
-          <a href="#contact" style={{
+          <a href="/contact" style={{
             background: "linear-gradient(135deg, #B91C1C, #991B1B)", color: "#fff", padding: "10px 24px", borderRadius: 8,
             fontSize: 14, fontWeight: 600, textDecoration: "none", transition: "transform 0.2s, box-shadow 0.2s",
             boxShadow: "0 2px 8px rgba(185,28,28,0.25)",
@@ -93,7 +93,7 @@ function Nav() {
           {links.map(l => (
             <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)} style={{ display: "block", padding: "12px 0", fontSize: 15, fontWeight: 500, color: "#334155", textDecoration: "none", borderBottom: "1px solid #F1F5F9" }}>{l.label}</a>
           ))}
-          <a href="#contact" onClick={() => setMobileOpen(false)} style={{ display: "block", marginTop: 16, background: "#B91C1C", color: "#fff", padding: "12px 24px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>Free Consultation</a>
+          <a href="/contact" onClick={() => setMobileOpen(false)} style={{ display: "block", marginTop: 16, background: "#B91C1C", color: "#fff", padding: "12px 24px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", textAlign: "center" }}>Free Consultation</a>
         </div>
       )}
     </nav>
@@ -138,7 +138,7 @@ function Hero() {
             </Reveal>
             <Reveal delay={0.3}>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <a href="#contact" style={{
+                <a href="/contact" style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: "linear-gradient(135deg, #1E2761, #2D3A8C)", color: "#fff",
                   padding: "14px 32px", borderRadius: 10, fontSize: 15, fontWeight: 600,
@@ -148,7 +148,7 @@ function Hero() {
                   onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(30,39,97,0.4)"; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(30,39,97,0.3)"; }}
                 >Start Your EU Expansion <ArrowRight size={18} /></a>
-                <a href="#process" style={{
+                <a href="/how-it-works" style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: "#fff", color: "#1E2761", border: "2px solid #E2E8F0",
                   padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 600,
@@ -648,7 +648,7 @@ function Footer() {
           <div>
             <h4 style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 16, textTransform: "uppercase", letterSpacing: 1 }}>Services</h4>
             {["Branch Registration", "Local Representation", "Warehouse & Logistics", "Compliance & Legal", "Buyer Connections"].map((t, i) => (
-              <a key={i} href="#services" style={{ display: "block", fontSize: 14, color: "#94A3B8", textDecoration: "none", padding: "4px 0", transition: "color 0.2s" }}
+              <a key={i} href="/how-it-works" style={{ display: "block", fontSize: 14, color: "#94A3B8", textDecoration: "none", padding: "4px 0", transition: "color 0.2s" }}
                 onMouseEnter={e => e.target.style.color = "#fff"}
                 onMouseLeave={e => e.target.style.color = "#94A3B8"}
               >{t}</a>
@@ -656,11 +656,11 @@ function Footer() {
           </div>
           <div>
             <h4 style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 16, textTransform: "uppercase", letterSpacing: 1 }}>Company</h4>
-            {["About Us", "How It Works", "Pricing", "Blog", "Contact"].map((t, i) => (
-              <a key={i} href="#" style={{ display: "block", fontSize: 14, color: "#94A3B8", textDecoration: "none", padding: "4px 0", transition: "color 0.2s" }}
+            {[{label:"About Us",href:"/about"},{label:"How It Works",href:"/how-it-works"},{label:"Pricing",href:"/pricing"},{label:"Blog",href:"/blog"},{label:"Contact",href:"/contact"}].map((l, i) => (
+              <a key={i} href={l.href} style={{ display: "block", fontSize: 14, color: "#94A3B8", textDecoration: "none", padding: "4px 0", transition: "color 0.2s" }}
                 onMouseEnter={e => e.target.style.color = "#fff"}
                 onMouseLeave={e => e.target.style.color = "#94A3B8"}
-              >{t}</a>
+              >{l.label}</a>
             ))}
           </div>
           <div>
