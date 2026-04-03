@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { Globe, ArrowRight, Search, Menu, X as XIcon, Clock, ChevronRight, BookOpen, FileText, Download, Mail, Tag, TrendingUp, Shield, Users, Truck, Scale, Landmark, Filter, Calendar, ArrowUpRight, Bookmark, Rss } from "lucide-react";
 
@@ -30,16 +31,17 @@ function Nav() {
   const [mob, setMob] = useState(false);
   useEffect(() => { const f = () => setScrolled(window.scrollY > 40); window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f); }, []);
   const links = [
-    { label: "Home", href: "#" },
-    { label: "Articles", href: "#articles" },
-    { label: "Guides", href: "#guides" },
-    { label: "Resources", href: "#resources" },
-    { label: "Newsletter", href: "#newsletter" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: scrolled ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid #E2E8F0" : "1px solid transparent", transition: "all 0.35s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg, #1E2761, #2D3A8C)", display: "flex", alignItems: "center", justifyContent: "center" }}><Globe size={20} color="#fff" strokeWidth={2.2} /></div>
           <div><span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: "#1E2761" }}>EuroBranch</span><span style={{ display: "block", fontSize: 10, color: "#64748B", letterSpacing: "1.5px", textTransform: "uppercase", marginTop: -2 }}>Gateway to Europe</span></div>
         </a>

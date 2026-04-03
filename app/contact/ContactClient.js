@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { Globe, ArrowRight, Check, Menu, X as XIcon, Mail, Phone, MapPin, Clock, Send, MessageSquare, Calendar, Building2, Linkedin, ChevronRight, Shield, Users, Truck, FileCheck, HelpCircle, CheckCircle, Loader } from "lucide-react";
 
@@ -30,22 +31,23 @@ function Nav() {
   const [mob, setMob] = useState(false);
   useEffect(() => { const f = () => setScrolled(window.scrollY > 40); window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f); }, []);
   const links = [
-    { label: "Home", href: "#" },
-    { label: "Book Consultation", href: "#form" },
-    { label: "Contact Info", href: "#info" },
-    { label: "Office", href: "#office" },
-    { label: "FAQ", href: "#quick-faq" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: scrolled ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid #E2E8F0" : "1px solid transparent", transition: "all 0.35s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg, #1E2761, #2D3A8C)", display: "flex", alignItems: "center", justifyContent: "center" }}><Globe size={20} color="#fff" strokeWidth={2.2} /></div>
           <div><span style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: "#1E2761" }}>EuroBranch</span><span style={{ display: "block", fontSize: 10, color: "#64748B", letterSpacing: "1.5px", textTransform: "uppercase", marginTop: -2 }}>Gateway to Europe</span></div>
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: 28 }} className="nav-desktop">
           {links.map(l => <a key={l.label} href={l.href} style={{ textDecoration: "none", fontSize: 14, fontWeight: 500, color: "#475569", transition: "color 0.2s" }} onMouseEnter={e => e.target.style.color = "#B91C1C"} onMouseLeave={e => e.target.style.color = "#475569"}>{l.label}</a>)}
-          <a href="#form" style={{ background: "linear-gradient(135deg, #B91C1C, #991B1B)", color: "#fff", padding: "10px 24px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 2px 8px rgba(185,28,28,0.25)", transition: "transform 0.2s" }} onMouseEnter={e => e.target.style.transform = "translateY(-1px)"} onMouseLeave={e => e.target.style.transform = "translateY(0)"}>Book Consultation</a>
+          <a href="/contact" style={{ background: "linear-gradient(135deg, #B91C1C, #991B1B)", color: "#fff", padding: "10px 24px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 2px 8px rgba(185,28,28,0.25)", transition: "transform 0.2s" }} onMouseEnter={e => e.target.style.transform = "translateY(-1px)"} onMouseLeave={e => e.target.style.transform = "translateY(0)"}>Book Consultation</a>
         </div>
         <button className="nav-mobile-btn" onClick={() => setMob(!mob)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8 }}>{mob ? <XIcon size={24} color="#1E2761" /> : <Menu size={24} color="#1E2761" />}</button>
       </div>
@@ -488,7 +490,7 @@ function CTABanner() {
         <Reveal>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px, 3vw, 34px)", color: "#fff", marginBottom: 12 }}>Your EU Branch, Weeks Away</h2>
           <p style={{ fontSize: 15, color: "#CBD5E1", lineHeight: 1.7, maxWidth: 480, margin: "0 auto 28px" }}>Every great European expansion starts with a single conversation. Take that step today.</p>
-          <a href="#form" style={{
+          <a href="/contact" style={{
             display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1E2761",
             padding: "14px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none",
             boxShadow: "0 4px 20px rgba(0,0,0,0.15)", transition: "transform 0.2s",

@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { Globe, ArrowRight, Users, Target, Eye, Anchor, Ship, Plane, MapPin, Building2, Handshake, Award, CheckCircle, ChevronRight, Mail, Phone, Linkedin, Shield, TrendingUp, Heart, Menu, X as XIcon } from "lucide-react";
 
@@ -37,12 +38,12 @@ function Nav() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
   const links = [
-    { label: "Home", href: "#" },
-    { label: "Our Story", href: "#story" },
-    { label: "Mission", href: "#mission" },
-    { label: "Why Netherlands", href: "#netherlands" },
-    { label: "Our Team", href: "#team" },
-    { label: "Contact", href: "#cta" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
   return (
     <nav style={{
@@ -53,7 +54,7 @@ function Nav() {
       transition: "all 0.35s ease",
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{ width: 38, height: 38, borderRadius: 10, background: "linear-gradient(135deg, #1E2761, #2D3A8C)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Globe size={20} color="#fff" strokeWidth={2.2} />
           </div>
@@ -69,14 +70,14 @@ function Nav() {
               onMouseLeave={e => e.target.style.color = "#475569"}
             >{l.label}</a>
           ))}
-          <a href="#cta" style={{
+          <a href="/contact" style={{
             background: "linear-gradient(135deg, #B91C1C, #991B1B)", color: "#fff", padding: "10px 24px", borderRadius: 8,
             fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 2px 8px rgba(185,28,28,0.25)",
             transition: "transform 0.2s, box-shadow 0.2s",
           }}
             onMouseEnter={e => { e.target.style.transform = "translateY(-1px)"; e.target.style.boxShadow = "0 4px 16px rgba(185,28,28,0.35)"; }}
             onMouseLeave={e => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 2px 8px rgba(185,28,28,0.25)"; }}
-          >Get in Touch</a>
+          >Free Consultation</a>
         </div>
         <button className="nav-mobile-btn" onClick={() => setMobileOpen(!mobileOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8 }}>
           {mobileOpen ? <XIcon size={24} color="#1E2761" /> : <Menu size={24} color="#1E2761" />}
